@@ -1,14 +1,155 @@
+//Measurements  px = Monkey, rem AKA relative unit 1REM = 10px, vw = viewport width vh = viewport heigh
 @import "_variables.scss";
-@import "_btn.scss";
 
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@function font($font-name) {
+  @return map-get($fonts, $font-name);
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+.header {
+  font-size: 5rem;
+  font-family: font(sta);
+}
 .container {
-  width: 80vw;
-  margin: 2rem auto;
+  height: auto;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: aquamarine;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 1rem;
   font-size: 1.5rem;
   align-items: center;
   text-align: center;
+}
+.box {
+  height: 50vh;
+  width: 30vw;
+  margin: 2rem auto;
+  border-radius: 3rem;
+  font-family: font(vam);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0.75rem;
+  font-size: 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+.box:hover {
+  box-shadow: 0 20px 0.8rem rgba(color(black), 3);
+}
+
+.box-1 {
+  background-color: color(ora);
+}
+.box-2 {
+  background-color: color(purp);
+}
+.box-3 {
+  background-color: color(blu);
+}
+.first-text {
+  font-family: font(sta);
+}
+.img {
+  height: 40%;
+  transition: all 0.7s;
+}
+.img:hover {
+  border-radius: 0;
+  transform: scale(1.3);
+}
+
+.link {
+  color: white;
+  font-family: font(sta);
+}
+#home {
+  height: auto;
+  width: 100 vw;
+  background-color: color(gru);
+}
+
+.home-ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.home-li {
+  transition: all 0.4s;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: font(sta);
+  font-size: 3.25rem;
+  padding: 3.3rem 4rem;
+  list-style-type: none;
+}
+.home-li:hover {
+  transform: scale(1.5);
+}
+.link:active {
+  transform: translateY(-2px);
+  transform: scaleX(2) scaleY(2);
+}
+button {
+  position: relative;
+  height: 3vh;
+  width: 10vw;
+  text-transform: uppercase;
+  font-size: 90%;
+  font-family: font(sta);
+  border-width: 2px;
+  border-style: solid;
+  margin: auto;
+  min-width: 80%;
+  white-space: wrap;
+  padding: 5px;
+}
+.swipe {
+  color: color(blu);
+  border-color: color(blu);
+}
+
+.swipe span {
+  position: relative;
+  z-index: 5;
+  transition: color 1000ms;
+}
+
+.swipe::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: color(gru);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 3000ms;
+  z-index: 2;
+}
+
+.swipe:hover {
+  color: whitesmoke;
+}
+
+.swipe:hover::before {
+  transform: scaleX(1);
 }
